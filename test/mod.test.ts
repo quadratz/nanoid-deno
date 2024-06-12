@@ -13,7 +13,6 @@ import {
   random,
   urlAlphabet,
 } from "../mod.ts";
-import { NAN_ERROR_MSG } from "../src/nanoid.ts";
 
 Deno.test("nanoid", async (t) => {
   await t.step("generates URL-friendly IDs", () => {
