@@ -32,10 +32,10 @@ Doc: https://github.com/quadratz/nanoid-deno
 Module: https://jsr.io/@qz/nanoid-deno
 
 ${yellow("Version:")}
-  ${green(`nanoid-deno ${VERSION}`)}
+  nanoid-deno ${green(VERSION)}
 
 ${yellow("Usage:")}
-  ${green("deno run jsr:@qz/nanoid-deno/cli [OPTIONS]")}
+  ${blue("deno run jsr:@qz/nanoid-deno/cli")} ${green("[OPTIONS]")}
 
 ${yellow("Options:")}
   ${green("-s")}, ${green("--size")}       Generated ID size
