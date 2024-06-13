@@ -3,7 +3,6 @@
 import {
   assertIsError,
   assertMatch,
-  assertNotEquals,
   assertStrictEquals,
 } from "jsr:@std/assert@0.226";
 import { customAlphabet, nanoid } from "../non_secure.ts";
@@ -132,4 +131,3 @@ Deno.test("urlAlphabet", async (t) => {
     }
   });
 });
-
