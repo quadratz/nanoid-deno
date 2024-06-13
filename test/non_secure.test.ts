@@ -58,6 +58,17 @@ Deno.test("nanoid", async (t) => {
     }
     assertStrictEquals(max - min <= 0.05, true);
   });
+
+  await t.step("throw an error for 'NaN' size", () => {
+    let err: Error | undefined;
+    try {
+      nanoid(NaN);
+    } catch (error) {
+      err = error;
+    } finally {
+      assertIsError(err, Deno.errors.InvalidData, "NaN");
+    }
+  });
 });
 
 Deno.test("customAlphabet", async (t) => {
