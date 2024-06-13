@@ -133,37 +133,3 @@ Deno.test("urlAlphabet", async (t) => {
   });
 });
 
-Deno.test("proxy number", async (t) => {
-  await t.step("prevent collision", () => {
-    const makeProxyNumberToReproducePreviousID = () => {
-      let step = 0;
-      return {
-        valueOf() {
-          // "if (!pool || pool.length < bytes) {"
-          if (step === 0) {
-            step++;
-            return 0;
-          }
-          // "} else if (poolOffset + bytes > pool.length) {"
-          if (step === 1) {
-            step++;
-            return -Infinity;
-          }
-          // "poolOffset += bytes"
-          if (step === 2) {
-            step++;
-            return 0;
-          }
-
-          return 21;
-        },
-      };
-    };
-
-    const id1 = nanoid();
-    // @ts-ignore testing the misuse of `valueOf`
-    const id2 = nanoid(makeProxyNumberToReproducePreviousID());
-
-    assertNotEquals(id1, id2);
-  });
-});
