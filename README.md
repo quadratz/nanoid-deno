@@ -197,7 +197,7 @@ For easier access, you can install nanoid-deno globally on your machine with
 this command:
 
 ```sh-session
-$ deno install --global -n nanoid jsr@qz/nanoid-deno/cli
+$ deno install --global -n nanoid jsr:@qz/nanoid-deno/cli
 ✅ Successfully installed nanoid
 /home/qz/.deno/bin/nanoid
 ```

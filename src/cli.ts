@@ -67,7 +67,7 @@ switch (true) {
 
 const nanErrMsg = `${
   bold(red("error"))
-}: Invalid size: '${flags.size}'. Please provide a valid number for the ID size.
+}: Invalid size: '${flags.size}'. Please provide a valid number.
 \nFor more information, try '--help'.\n`;
 
 if (flags.size && flags.size.length === 0) {
@@ -86,7 +86,7 @@ if (size !== undefined) {
   if (size < 0) {
     const msg = `${
       bold(red("error"))
-    }: Invalid size: '${flags.size}'. Please provide a positive number for the ID size.
+    }: Invalid size: '${flags.size}'. Please provide a positive number.
     \nFor more information, try '--help'.\n`;
 
     console.error(msg);
