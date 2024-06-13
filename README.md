@@ -189,7 +189,7 @@ result.
 To generate a unique ID in the terminal, you can simply run this command:
 
 ```sh-session
-$ deno run @qz/nanoid-deno/cli
+$ deno run jsr:@qz/nanoid-deno/cli
 LZfXLFzPPR4NNrgjlWDxn
 ```
 
