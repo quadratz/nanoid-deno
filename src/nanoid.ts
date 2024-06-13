@@ -18,11 +18,6 @@ import { urlAlphabet } from "./url_alphabet.ts";
  * @returns {string} A random string.
  */
 function nanoid(size: number = 21): string {
-  if (isNaN(size)) {
-    throw new Deno.errors.InvalidData(
-      "Invalid default size: 'NaN'. Please provide a valid number for the default size.",
-    );
-  }
   // `-=` convert `size` to number to prevent `valueOf` abusing
   fillPool(size -= 0);
   let id: string = "";
@@ -98,12 +93,6 @@ function customRandom(
   defaultSize: number,
   getRandom: (bytes: number) => Uint8Array,
 ): (size?: number) => string {
-  if (isNaN(defaultSize)) {
-    throw new Deno.errors.InvalidData(
-      "Invalid default size: 'NaN'. Please provide a valid number for the default size.",
-    );
-  }
-
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -154,12 +143,6 @@ function customRandom(
  * @returns {Uint8Array} An array of random bytes.
  */
 function random(bytes: number): Uint8Array {
-  if (isNaN(bytes)) {
-    throw new Deno.errors.InvalidData(
-      "Invalid bytes size: 'NaN'. Please provide a valid number for the bytes size.",
-    );
-  }
-
   // `-=` convert `bytes` to number to prevent `valueOf` abusing
   fillPool(bytes -= 0);
   return pool.subarray(poolOffset - bytes, poolOffset);
