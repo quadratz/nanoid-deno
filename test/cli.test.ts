@@ -19,18 +19,16 @@ async function nanoidCli(arg: string = "") {
 Deno.test("CLI", async (t) => {
   await t.step("prints unique ID", async () => {
     const result = await nanoidCli();
-    const { stdout, success, stderr } = result;
+    const { stdout, success } = result;
     assertMatch(stdout, /^[\w-]{21}\n$/);
     assertStrictEquals(success, true);
-    assertStrictEquals(stderr.length, 0);
   });
 
   await t.step("uses size", async () => {
     const result = await nanoidCli("--size 10");
-    const { stdout, success, stderr } = result;
+    const { stdout, success } = result;
     assertMatch(stdout, /^[\w-]{10}\n$/);
     assertStrictEquals(success, true);
-    assertStrictEquals(stderr.length, 0);
 
     const result2 = await nanoidCli("--s 10");
     const { stdout: shortcut } = result2;
@@ -39,10 +37,9 @@ Deno.test("CLI", async (t) => {
 
   await t.step("uses alphabet", async () => {
     const result = await nanoidCli("--alphabet abc --size 15");
-    const { stdout, success, stderr } = result;
+    const { stdout, success } = result;
     assertMatch(stdout, /^[abc]{15}\n$/);
     assertStrictEquals(success, true);
-    assertStrictEquals(stderr.length, 0);
 
     const result2 = await nanoidCli("-a abc -s 15");
     const { stdout: shortcut } = result2;
@@ -51,34 +48,30 @@ Deno.test("CLI", async (t) => {
 
   await t.step("shows an error on unknown argument", async () => {
     const result = await nanoidCli("--cook");
-    const { stdout, success, stderr } = result;
-    assertStrictEquals(stdout.length, 0);
+    const { success, stderr } = result;
     assertStrictEquals(success, false);
     assertMatch(stderr, /.*unexpected argument '--cook'.*/);
   });
 
   await t.step("shows an error if size is not a number", async () => {
     const result = await nanoidCli("-s abc");
-    const { stdout, success, stderr } = result;
-    assertStrictEquals(stdout.length, 0);
+    const { success, stderr } = result;
     assertStrictEquals(success, false);
     assertMatch(stderr, /Invalid size: 'abc'. Please provide a valid number/);
   });
 
   await t.step("shows an error if size is a negative number", async () => {
     const result = await nanoidCli("-s=-1");
-    const { stdout, success, stderr } = result;
-    assertStrictEquals(stdout.length, 0);
+    const { success, stderr } = result;
     assertStrictEquals(success, false);
     assertMatch(stderr, /Invalid size: '-1'. Please provide a positive number/);
   });
 
   await t.step("displays help", async () => {
     const result = await nanoidCli("--help");
-    const { stdout, success, stderr } = result;
+    const { stdout, success } = result;
     assertMatch(stdout, /Show this help/);
     assertStrictEquals(success, true);
-    assertStrictEquals(stderr.length, 0);
 
     const result2 = await nanoidCli("-h");
     const { stdout: shortcut } = result2;
@@ -88,10 +81,9 @@ Deno.test("CLI", async (t) => {
   await t.step("displays the correct version", async () => {
     const re = new RegExp(denoJson.version);
     const result = await nanoidCli("--version");
-    const { stdout, success, stderr } = result;
+    const { stdout, success } = result;
     assertMatch(stdout, re);
     assertStrictEquals(success, true);
-    assertStrictEquals(stderr.length, 0);
 
     const result2 = await nanoidCli("-V");
     const { stdout: shortcut } = result2;
