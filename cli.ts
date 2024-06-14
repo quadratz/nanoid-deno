@@ -3,6 +3,6 @@
 /**
  * Module to generate a unique ID in the terminal.
  *
- * @module nanoid-deno/cli */
-
+ * @module nanoid-deno/cli
+ */
 import "./src/cli.ts";
