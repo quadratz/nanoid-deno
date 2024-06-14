@@ -22,7 +22,8 @@
       ".github",
       "img",
       ".gitignore",
-      "docs"
+      "docs",
+      "deno.lock"
     ]
   }
 }
