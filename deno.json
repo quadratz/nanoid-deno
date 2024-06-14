@@ -1,6 +1,6 @@
 {
   "name": "@qz/nanoid-deno",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "exports": {
     ".": "./mod.ts",
     "./non_secure": "./non_secure.ts",

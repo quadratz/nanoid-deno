@@ -7,7 +7,7 @@
  * collision probability, which is available in `@qz/nanoid-deno`.
  * If you are not highly concerned with security, you can use this non-secure
  * version for environments without hardware random generators.
- * 
+ *
  * @module nanoid-deno/non_secure
  */
 export { customAlphabet, nanoid } from "./src/non_secure.ts";
